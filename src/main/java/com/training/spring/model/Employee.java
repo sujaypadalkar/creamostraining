@@ -26,7 +26,7 @@ import javax.persistence.Table;
 public class Employee {
 
 	public Employee(){
-		
+		//default constructor 
 	}
 	public Employee(Long employeeNum, String firstName, String lastName,
 			String designation) {
