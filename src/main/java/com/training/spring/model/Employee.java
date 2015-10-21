@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -20,7 +22,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="EMPLOYEE")
+@NamedQueries(value={@NamedQuery(name="employeeByNum", query="SELECT employeeNum, firstName, lastName, designation FROM Employee where employeeNum = :employeeNum")})
 public class Employee {
+
+	public Employee(){
+		
+	}
+	public Employee(Long employeeNum, String firstName, String lastName,
+			String designation) {
+		this.employeeNum = employeeNum;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.designation = designation;
+	}
 
 	@Id
 	@SequenceGenerator(name="EMPLOYEE_SEQ", sequenceName="EMPLOYEE_SEQ")
